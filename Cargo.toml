@@ -2,9 +2,10 @@
 name = "ez_log"
 version = "0.1.1"
 edition = "2021"
+authors = ["JajaNooba"]
 description = "Simple logging library for Rust"
 license = "MIT"
-repostitory = "https://github.com/JajaNooba/ez-log"
+repository = "https://github.com/JajaNooba/ez-log"
 documentation = "https://docs.rs/ez_log/latest/ez_log/"
 
 [dependencies]
