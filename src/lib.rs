@@ -1,4 +1,4 @@
-//# ez_log: Simple logging library for Rust
+//! # ez_log: Simple logging library for Rust
 //!
 //!
 //! ### Features
