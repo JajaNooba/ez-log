@@ -77,8 +77,9 @@ fn get_msg_label(log_type: LogType) -> String {
     }
 }
 
+#[allow(dead_code)]
 #[cfg(feature = "dump")]
-fn dump_log(log_type: LogType, msg: String) {
+fn dump_log(log_type: LogType, log_file: String, msg: String) {
     use std::{fs, io::Write, path::Path};
 
     let log_dir_str = std::option_env!("EZ_LOG_LOGS_DIR").unwrap_or("./logs");
@@ -100,9 +101,24 @@ fn dump_log(log_type: LogType, msg: String) {
         .unwrap();
 
     let content = match log_type {
-        LogType::Info => format!("{} [INFO] {}\n", get_formatted_time(), msg),
-        LogType::Warn => format!("{} [WARN] {}\n", get_formatted_time(), msg),
-        LogType::Error => format!("{} [ERROR] {}\n", get_formatted_time(), msg),
+        LogType::Info => format!(
+            "{} [INFO] [{}] {}\n",
+            utils::get_formatted_time(),
+            log_file,
+            msg
+        ),
+        LogType::Warn => format!(
+            "{} [WARN] [{}] {}\n",
+            utils::get_formatted_time(),
+            log_file,
+            msg
+        ),
+        LogType::Error => format!(
+            "{} [ERROR] [{}] {}\n",
+            utils::get_formatted_time(),
+            log_file,
+            msg
+        ),
     };
 
     if let Err(e) = file.write(content.as_bytes()) {

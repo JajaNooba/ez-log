@@ -21,6 +21,8 @@ Usage of those macros is similar to `print_ln!` macro.
 
 ### Example 
 ```rs
+use ez_log::*;
+
 let address = "127.0.0.1";
 let port = 8000;
 
@@ -37,6 +39,8 @@ match start_web_server() {
 ```
 
 ```rs
+use ez_log::*;
+
 if let Err(error) = handle_request() {
     log_warn!("Could not respond to request! {}", error);
 }

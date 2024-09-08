@@ -9,6 +9,8 @@
 ///
 /// ### Example
 /// ```
+/// use ez_log::*;
+///
 /// let address = "127.0.0.1";
 /// let port = 8000;
 ///
@@ -20,10 +22,10 @@
 macro_rules! log_info {
     ($($arg:tt)*) => {
         let args = std::fmt::format(format_args!($($arg)*));
-        let msg = format!("{} [{}] {}", $crate::get_msg_label($crate::LogType::Info), file!(),args);
+        let msg = format!("{} [{}] {}", $crate::get_msg_label($crate::LogType::Info), file!(), args);
 
         #[cfg(feature = "dump")]
-        $crate::dump_log($crate::LogType::Info, args);
+        $crate::dump_log($crate::LogType::Info, file!().into(), args);
 
         println!("{msg}");
     };
@@ -40,6 +42,8 @@ pub use log_info;
 ///
 /// ### Example
 /// ```
+/// use ez_log::*;
+///
 /// match handle_request() {
 ///     Ok() => todo!(),
 ///     Err(why) => {
@@ -56,7 +60,7 @@ macro_rules! log_warn {
         let msg = format!("{} [{}] {}", $crate::get_msg_label($crate::LogType::Warn), file!(), args);
 
         #[cfg(feature = "dump")]
-        $crate::dump_log($crate::LogType::Warn, args);
+        $crate::dump_log($crate::LogType::Warn, file!().into(), args);
 
         println!("{msg}");
     };
@@ -73,6 +77,8 @@ pub use log_warn;
 ///
 /// ### Example
 /// ```
+/// use ez_log::*;
+///
 /// match start_web_server() {
 ///     Ok() => todo!(),
 ///     Err(error) => {
@@ -88,7 +94,7 @@ macro_rules! log_error {
         let msg = format!("{} [{}] {}", $crate::get_msg_label($crate::LogType::Error), file!(), args);
 
         #[cfg(feature = "dump")]
-        $crate::dump_log($crate::LogType::Error, args);
+        $crate::dump_log($crate::LogType::Error, file!().into(), args);
 
         println!("{msg}");
     };
