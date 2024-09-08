@@ -4,6 +4,8 @@ version = "0.1.0"
 edition = "2021"
 description = "Simple logging library for Rust"
 license = "MIT"
+repostitory = "https://github.com/JajaNooba/ez-log"
+documentation = "https://docs.rs/ez_log/latest/ez_log/"
 
 [dependencies]
 colorized = { version = "1.0.0", optional = true }
