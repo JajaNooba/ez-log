@@ -20,14 +20,14 @@ mod macros;
 mod utils;
 
 #[allow(dead_code)]
-enum LogType {
+pub enum LogType {
     Info,
     Warn,
     Error,
 }
 
 #[allow(dead_code)]
-fn get_msg_label(log_type: LogType) -> String {
+pub fn get_msg_label(log_type: LogType) -> String {
     #[cfg(not(feature = "color"))]
     match log_type {
         LogType::Info => "[INFO]",
